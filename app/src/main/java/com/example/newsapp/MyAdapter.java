@@ -1,47 +1,74 @@
 package com.example.newsapp;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import org.xmlpull.v1.XmlPullParser;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends BaseAdapter {
+public class MyAdapter extends ArrayAdapter<News> {
 
-    ArrayList<News> newsArr;
+    private final Context context;
+    int resource;
 
-    public MyAdapter(ArrayList<News> arr) {
-        this.newsArr = arr;
+    public MyAdapter(@NonNull Context context, int resource, ArrayList<News> array) {
+        super(context, resource, array);
+        this.context = context;
+        this.resource = resource;
     }
 
+    @NonNull
     @Override
-    public int getCount() {
-        return newsArr.size();
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        String caption = getItem(position).getCaptionString();
+        String content = getItem(position).getContentString();
+        String picpath = getItem(position).getPicturePathString();
 
-    @Override
-    public Object getItem(int i) {
-        return null;
-    }
+        //News news = new News(caption, content, picpath);
 
-    @Override
-    public long getItemId(int i) {
-        return 0;
-    }
+        LayoutInflater inflater = LayoutInflater.from(context);
+        convertView = inflater.inflate(resource, parent , false);
 
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        View.inflate(view.getContext(),R.layout.item_layout, null); //ViewHolder?
-        TextView caption = view.findViewById(R.id.tV_Caption);
-        TextView content = view.findViewById(R.id.tV_Content);
-        TextView picturePath = view.findViewById(R.id.img_View);
+        TextView tVcaption = convertView.findViewById(R.id.tV_Caption);
+        TextView tVcontent = convertView.findViewById(R.id.tV_Content);
+        ImageView imgView = convertView.findViewById(R.id.img_View);
 
-        News currentNews = newsArr.get(i);
+        tVcaption.setText(caption);
+        tVcontent.setText(content);
+        new DownloadImage(imgView).execute(picpath);
 
-        caption.setText(currentNews.getCaptionString());
-        content.setText(currentNews.getContentString());
-        picturePath.setText(currentNews.getPicturePathString());
-        return view;
+        return convertView;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

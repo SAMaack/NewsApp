@@ -1,8 +1,9 @@
 package com.example.newsapp;
 
+
+import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ListView;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,18 +13,22 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class DatabaseActivity extends AsyncTask<String, Void, String> {
 
+    private static final String TAG = "DatabaseActivity";
+
     private ListView lView;  //Leaks context???
+    Context context;
     MyAdapter adapter;
 
-    public DatabaseActivity(ListView lv) {
+    public DatabaseActivity(Context con, ListView lv) {
         this.lView = lv;
+        this.context = con;
+
     }
 
     /////////////////////////////////////////////////
@@ -104,7 +109,7 @@ public class DatabaseActivity extends AsyncTask<String, Void, String> {
                             articleAsJson.getString("PictureAddress")));
                 }
 
-                this.adapter = new MyAdapter(newsArr);
+                this.adapter = new MyAdapter(context, R.layout.item_layout, newsArr);
                 lView.setAdapter(adapter);
 
             } catch (JSONException e) {

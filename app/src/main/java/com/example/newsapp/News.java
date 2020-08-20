@@ -1,6 +1,8 @@
 package com.example.newsapp;
 
-public class News {
+import java.io.Serializable;
+
+public class News implements Serializable {
     private String captionString;
     private String contentString;
     private String picturePathString;
