@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,32 +14,35 @@
             android:layout_width="match_parent">
 
             <ImageView
-                android:id="@+id/img_View"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:id="@+id/img_card_view"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:contentDescription="PictureHere" />
 
             <RelativeLayout
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_toEndOf="@+id/img_View"
-                android:layout_centerInParent="true">
+                android:layout_toEndOf="@+id/img_card_view"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp">
 
                 <TextView
-                    android:id="@+id/tV_Caption"
+                    android:id="@+id/tV_card_cap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:textSize="25dp"
+                    android:textStyle="bold"
                     android:text="Sample Caption" />
 
                 <TextView
-                    android:id="@+id/tV_Content"
+                    android:id="@+id/tV_card_con"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tV_Caption"
+                    android:layout_below="@id/tV_card_cap"
                     android:layout_marginTop="10dp"
 
-                    android:text="Sample Content" />
+                    android:text="Sample Content"
+                    android:visibility="invisible" />
             </RelativeLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

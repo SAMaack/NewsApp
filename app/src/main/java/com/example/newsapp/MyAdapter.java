@@ -11,8 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.xmlpull.v1.XmlPullParser;
-
 import java.util.ArrayList;
 
 public class MyAdapter extends ArrayAdapter<News> {
@@ -38,9 +36,9 @@ public class MyAdapter extends ArrayAdapter<News> {
         LayoutInflater inflater = LayoutInflater.from(context);
         convertView = inflater.inflate(resource, parent , false);
 
-        TextView tVcaption = convertView.findViewById(R.id.tV_Caption);
-        TextView tVcontent = convertView.findViewById(R.id.tV_Content);
-        ImageView imgView = convertView.findViewById(R.id.img_View);
+        TextView tVcaption = convertView.findViewById(R.id.tV_card_cap);
+        TextView tVcontent = convertView.findViewById(R.id.tV_card_con);
+        ImageView imgView = convertView.findViewById(R.id.img_card_view);
 
         tVcaption.setText(caption);
         tVcontent.setText(content);
