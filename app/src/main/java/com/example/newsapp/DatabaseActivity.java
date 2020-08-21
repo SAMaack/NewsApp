@@ -99,9 +99,9 @@ public class DatabaseActivity extends AsyncTask<String, Void, String> {
                 //JSON TO NEWS
                 JSONArray jsonArr = new JSONArray(result);
 
-                for (int i=0; i < jsonArr.length(); i++)
+                for (int i = jsonArr.length(); i > 0; i--)
                 {
-                    JSONObject articleAsJson = jsonArr.getJSONObject(i);
+                    JSONObject articleAsJson = jsonArr.getJSONObject(i-1);
 
                     // Pulls items from the array, generates new News objects with those items and then pushes them into an array.
                     newsArr.add(new News(articleAsJson.getString("Caption"),
