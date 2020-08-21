@@ -2,23 +2,17 @@ package com.example.newsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
+
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Picture;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.io.ByteArrayOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,11 +38,17 @@ public class MainActivity extends AppCompatActivity {
 
                 TextView tv1 = (TextView) view.findViewById(R.id.tV_card_cap);
                 TextView tv2 = (TextView) view.findViewById(R.id.tV_card_con);
+                ImageView iV = (ImageView) view.findViewById(R.id.img_card_view);
 
 
                 intent.putExtra("Caption", tv1.getText().toString());
                 intent.putExtra("Content", tv2.getText().toString());
-                intent.putExtra("Picture","PICTURE GOES HERE");
+
+                /*Drawable draw = iV.getDrawable();
+                Drawable current = draw.getCurrent();
+                int[] state = draw.getCurrent().getState();
+                Drawable.ConstantState constState = draw.getCurrent().getConstantState();
+                intent.putExtra("Picture", (Parcelable) constState);*/
 
                 startActivity(intent);
             }

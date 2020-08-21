@@ -1,10 +1,7 @@
 package com.example.newsapp;
 
-import android.content.DialogInterface;
+
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,16 +22,22 @@ public class BiggerNews extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bigger_news);
 
+        //Parameters
         Intent in = this.getIntent();
 
+        //Caption
         this.tv_cap_big = findViewById(R.id.tV_cap_bignews);
         tv_cap_big.setText(in.getStringExtra("Caption"));
 
+        //Content
         this.tv_con_big = findViewById(R.id.tV_con_bignews);
         tv_con_big.setText(in.getStringExtra("Content"));
 
         //new DownloadImage().execute(picpath);
-        //iv_pp_Big.setImageBitmap(bmp);
+        /*this.iv_pp_Big = findViewById(R.id.img_view_bignews);
+        Drawable drawBig = (Drawable) getIntent().getParcelableExtra("Picture");
+        iv_pp_Big.setImageDrawable(drawBig);*/
+
 
         btn_close = findViewById(R.id.btn_close);
         btn_close.setOnClickListener(new View.OnClickListener() {

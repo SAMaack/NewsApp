@@ -11,6 +11,10 @@
         android:id="@+id/img_view_bignews"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,30 +23,30 @@
         app:srcCompat="@drawable/ic_launcher_foreground"
         tools:ignore="VectorDrawableCompat" />
 
-    <TextView
-        android:id="@+id/tV_cap_bignews"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        android:text="Caption Sample"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_alignBottom="@+id/img_view_bignews"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_close"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/img_view_bignews"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_view_bignews"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/tV_con_bignews"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Content_Sample"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tV_cap_bignews"
-        app:layout_constraintTop_toBottomOf="@+id/tV_cap_bignews"
-        app:layout_constraintVertical_bias="0.305" />
+        <TextView
+            android:id="@+id/tV_cap_bignews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="81dp"
+            android:layout_marginEnd="98dp"
+            android:text="Caption Sample"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_close"
@@ -52,8 +56,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tV_con_bignews"
         app:layout_constraintVertical_bias="0.93" />
+
+    <TextView
+        android:id="@+id/tV_con_bignews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Content_Sample"
+        android:textSize="15dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="602dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

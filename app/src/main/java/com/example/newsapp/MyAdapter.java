@@ -1,6 +1,7 @@
 package com.example.newsapp;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class MyAdapter extends ArrayAdapter<News> {
+
+    private static final String TAG = "MyAdapter";
 
     private final Context context;
     int resource;
@@ -30,8 +33,6 @@ public class MyAdapter extends ArrayAdapter<News> {
         String caption = getItem(position).getCaptionString();
         String content = getItem(position).getContentString();
         String picpath = getItem(position).getPicturePathString();
-
-        //News news = new News(caption, content, picpath);
 
         LayoutInflater inflater = LayoutInflater.from(context);
         convertView = inflater.inflate(resource, parent , false);
