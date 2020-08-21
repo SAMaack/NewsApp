@@ -4,9 +4,6 @@ package com.example.newsapp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableContainer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -43,7 +40,7 @@ public class BiggerNews extends AppCompatActivity {
 
         this.iv_pp_Big = findViewById(R.id.img_view_bignews);
         try {
-            Bitmap bmp = BitmapFactory.decodeStream(openFileInput(in.getStringExtra("Picture")));
+            Bitmap bmp = BitmapFactory.decodeStream(openFileInput(in.getStringExtra("Picture"))); //Grabs compressed resource by stored name inside "picture" and decodes it.
             iv_pp_Big.setImageBitmap(bmp);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
