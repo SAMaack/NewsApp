@@ -3,8 +3,13 @@ package com.example.newsapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +17,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -44,11 +55,26 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("Caption", tv1.getText().toString());
                 intent.putExtra("Content", tv2.getText().toString());
 
-                /*Drawable draw = iV.getDrawable();
-                Drawable current = draw.getCurrent();
-                int[] state = draw.getCurrent().getState();
-                Drawable.ConstantState constState = draw.getCurrent().getConstantState();
-                intent.putExtra("Picture", (Parcelable) constState);*/
+
+                iV.setDrawingCacheEnabled(true);        //To be able to get the bitmap out of the view.
+                Bitmap bmp = iV.getDrawingCache();
+
+                //Source: https://stackoverflow.com/questions/2459524/how-can-i-pass-a-bitmap-object-from-one-activity-to-another
+                String fileName = "image";
+                try {
+                    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                    bmp.compress(Bitmap.CompressFormat.PNG,100, bytes);
+                    FileOutputStream fo = openFileOutput(fileName, Context.MODE_PRIVATE);
+                    fo.write(bytes.toByteArray());
+                    fo.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                //
+
+                intent.putExtra("Picture", fileName);
 
                 startActivity(intent);
             }

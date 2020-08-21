@@ -2,6 +2,11 @@ package com.example.newsapp;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +15,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.FileNotFoundException;
 
 public class BiggerNews extends AppCompatActivity {
     Button btn_close;
@@ -33,10 +40,15 @@ public class BiggerNews extends AppCompatActivity {
         this.tv_con_big = findViewById(R.id.tV_con_bignews);
         tv_con_big.setText(in.getStringExtra("Content"));
 
-        //new DownloadImage().execute(picpath);
-        /*this.iv_pp_Big = findViewById(R.id.img_view_bignews);
-        Drawable drawBig = (Drawable) getIntent().getParcelableExtra("Picture");
-        iv_pp_Big.setImageDrawable(drawBig);*/
+
+        this.iv_pp_Big = findViewById(R.id.img_view_bignews);
+        try {
+            Bitmap bmp = BitmapFactory.decodeStream(openFileInput(in.getStringExtra("Picture")));
+            iv_pp_Big.setImageBitmap(bmp);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
 
         btn_close = findViewById(R.id.btn_close);
