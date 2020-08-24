@@ -46,8 +46,6 @@ public class BiggerNews extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-
         btn_close = findViewById(R.id.btn_close);
         btn_close.setOnClickListener(new View.OnClickListener() {
 

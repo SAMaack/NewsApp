@@ -1,7 +1,6 @@
 package com.example.newsapp;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MyAdapter extends ArrayAdapter<News> {
 
@@ -27,10 +27,11 @@ public class MyAdapter extends ArrayAdapter<News> {
         this.resource = resource;
     }
 
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        String caption = getItem(position).getCaptionString();
+        String caption = Objects.requireNonNull(getItem(position)).getCaptionString();
         String content = getItem(position).getContentString();
         String picpath = getItem(position).getPicturePathString();
 
@@ -44,6 +45,8 @@ public class MyAdapter extends ArrayAdapter<News> {
         tVcaption.setText(caption);
         tVcontent.setText(content);
         new DownloadImage(imgView).execute(picpath);
+
+        convertView.setVerticalScrollBarEnabled(true);
 
         return convertView;
     }
