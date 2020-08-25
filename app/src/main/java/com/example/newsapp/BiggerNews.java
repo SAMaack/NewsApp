@@ -1,6 +1,5 @@
 package com.example.newsapp;
 
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,10 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.FileNotFoundException;
 
 public class BiggerNews extends AppCompatActivity {
@@ -26,6 +24,9 @@ public class BiggerNews extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bigger_news);
 
+        final ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+
         //Parameters
         Intent in = this.getIntent();
 
@@ -37,7 +38,7 @@ public class BiggerNews extends AppCompatActivity {
         this.tv_con_big = findViewById(R.id.tV_con_bignews);
         tv_con_big.setText(in.getStringExtra("Content"));
 
-
+        //Image
         this.iv_pp_Big = findViewById(R.id.img_view_bignews);
         try {
             Bitmap bmp = BitmapFactory.decodeStream(openFileInput(in.getStringExtra("Picture"))); //Grabs compressed resource by stored name inside "picture" and decodes it.
@@ -53,7 +54,7 @@ public class BiggerNews extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(BiggerNews.this, MainActivity.class);
                 startActivity(intent);
-            }
-        });
-    }
-}
+            }//END ONCLICK
+        });//END ONCLICKLISTENER
+    }//END ONCREATE
+}//END BIGGER NEWS
