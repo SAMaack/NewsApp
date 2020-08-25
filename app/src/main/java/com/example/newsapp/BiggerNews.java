@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -14,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.FileNotFoundException;
 
 public class BiggerNews extends AppCompatActivity {
-    Button btn_close;
     TextView tv_cap_big;
     TextView tv_con_big;
     ImageView iv_pp_Big;
@@ -46,15 +43,5 @@ public class BiggerNews extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        btn_close = findViewById(R.id.btn_close);
-        btn_close.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(BiggerNews.this, MainActivity.class);
-                startActivity(intent);
-            }//END ONCLICK
-        });//END ONCLICKLISTENER
     }//END ONCREATE
 }//END BIGGER NEWS
